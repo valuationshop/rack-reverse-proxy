@@ -81,7 +81,7 @@ module RackReverseProxy
 
     def preserve_host
       return unless options[:preserve_host]
-      target_request_headers["HOST"] = host_header
+      target_request_headers["HOST"] = "preferred-return.ghost.io" # host_header
     end
 
     def strip_headers
@@ -98,9 +98,9 @@ module RackReverseProxy
 
     def set_forwarded_headers
       return unless options[:x_forwarded_headers]
-      target_request_headers["X-Forwarded-Host"] = source_request.host
+      target_request_headers["X-Forwarded-Host"] = "preferredreturn.com"
       target_request_headers["X-Forwarded-Port"] = source_request.port.to_s
-      target_request_headers["X-Forwarded-Proto"] = source_request.scheme
+      target_request_headers["X-Forwarded-Proto"] = "https"
     end
 
     def initialize_http_header
