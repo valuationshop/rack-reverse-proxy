@@ -98,7 +98,7 @@ module RackReverseProxy
 
     def set_forwarded_headers
       target_request_headers["X-Forwarded-Host"] = "preferredreturn.com"
-      target_request_headers["X-Forwarded-Port"] = "443"
+      target_request_headers["X-Forwarded-Port"] = source_request.port.to_s
       target_request_headers["X-Forwarded-Ssl"] = "on"
       target_request_headers["X-Forwarded-Proto"] = "https"
     end
